@@ -1,36 +1,38 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title> IMG-ADD </title>
 </head>
+
 <body>
-<div>
     <div>
-        <form method="post">
-            {% csrf_token %}
-      Name :  <input name="name" placeholder="Name">
-            <input type="submit" value="Click me">
-    </form>
-
+        <div>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                Name : <input type="text" name="name" placeholder="Name">
+               USer IMG : <input type="file" name="img">
+               <input type="submit" value="Click Me" > 
+            </form>
+        </div>
+        <div>
+            {% for list in data %}
+            <ul>
+                <li>
+                    USER name : {{ list.name }}
+                </li>
+                <li>
+                    <img src="{{ list.img.url }}">
+                </li>
+            </ul>
+            {% endfor %}
+        </div>
 
     </div>
-    <div>
-        {% for list in data %}
-        <ul>
-            <li>
-                 USER name : {{ list.name }}
-            </li>
-            <li>
-                <img src="{{ list.img.url }}">
-            </li>
-        </ul>
-        {% endfor %}
-    </div>
-
-</div>
 
 
 </body>
+
 </html>
