@@ -13,8 +13,9 @@
             <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 Name : <input type="text" name="name" placeholder="Name">
-               USer IMG : <input type="file" name="img">
-               <input type="submit" value="Click Me" > 
+                USER IMG : <input type="file" name="img">
+                USER VIDEO : <input type="file" name="video">
+                <input type="submit" value="Click Me">
             </form>
         </div>
         <div>
@@ -23,13 +24,34 @@
                 <li>
                     USER name : {{ list.name }}
                 </li>
-                <li>
-                    <img src="{{ list.img.url }}">
-                </li>
+                 <li>
+                         <img src="{{ list.img.url }}">
+                 
+                 </li>
+                 <li>
+                    <video width='400' controls>
+                        <source src='{{ list.video.url }}' type='video/mp4'>
+                        Your browser does not support the video tag.
+                    </video>
+                    </li>
             </ul>
             {% endfor %}
         </div>
-
+        <!-- User Video upload -->
+         <!-- <div>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <br>USER VIDEO : <input type="file" name="video">
+                <input type="submit" value="Click Me">
+            </form>
+            {% for list in data %}
+            <video width='400' controls>
+                <source src='{{ list.video.url }}' type='video/mp4'>
+                Your browser does not support the video tag.
+            </video>
+            {% endfor %}
+        </div>  -->
+        <!-- User Video upload -->
     </div>
 
 
